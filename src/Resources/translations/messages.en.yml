@@ -1,0 +1,4 @@
+bitbag_sylius_coinbase_plugin:
+    ui:
+        api_key: API key
+        coinbase_gateway_label: Coinbase
