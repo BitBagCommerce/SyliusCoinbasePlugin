@@ -45,18 +45,27 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface, Gateway
         $details = ArrayObject::ensureArrayObject($request->getModel());
 
         if (isset($details['status']) && isset($details['payment_id'])) {
+            $charge = $this->coinbaseApiClient->show($details['payment_id']);
+
+            $timelineLast = end($charge->timeline);
+
+            $details['status'] = strtolower($timelineLast['status']);
+
             return;
         }
 
         /** @var TokenInterface $token */
         $token = $request->getToken();
 
-        $details['redirect_url'] = str_replace('http://127.0.0.1:8005', 'http://915baac2.ngrok.io', $token->getTargetUrl());
-        $details['cancel_url'] = str_replace('http://127.0.0.1:8005', 'http://915baac2.ngrok.io', $token->getTargetUrl());
+//        $details['redirect_url'] = str_replace('http://127.0.0.1:8005', 'http://fa0e4d7a.ngrok.io', $token->getTargetUrl());
+//        $details['cancel_url'] = str_replace('http://127.0.0.1:8005', 'http://fa0e4d7a.ngrok.io', $token->getTargetUrl());
+
+        $details['redirect_url'] = $token->getTargetUrl();
+        $details['cancel_url'] = $token->getTargetUrl();
 
         $charge = $this->coinbaseApiClient->create($details->getArrayCopy());
 
-        $details['payment_id'] = $charge->code;
+        $details['payment_id'] = $charge->id;
         $details['status'] = CoinbaseApiClientInterface::STATUS_CREATED;
 
         throw new HttpRedirect($charge->hosted_url);

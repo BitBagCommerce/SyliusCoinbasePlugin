@@ -1,0 +1,2 @@
+bitbag_sylius_coinbase_plugin:
+    resource: "@BitBagSyliusCoinbasePlugin/Resources/config/routing.yml"

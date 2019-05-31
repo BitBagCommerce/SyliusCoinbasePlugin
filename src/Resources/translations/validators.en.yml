@@ -1,3 +1,5 @@
 bitbag_sylius_coinbase_plugin:
     api_key:
         not_blank: API key cannot be blank.
+    webhook_secret_key:
+        not_blank: Webhook Secret Key cannot be blank.

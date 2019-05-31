@@ -52,12 +52,13 @@ final class ConvertPaymentAction implements ActionInterface, GatewayAwareInterfa
             'pricing_type' => 'fixed_price', // todo add static
             'local_price' => [
                 //'amount' => $payment->getAmount() / 100, // todo change
-                'amount' => '0.01', // todo change
+                'amount' => '4.41', // todo change
                 //'currency' => $payment->getCurrencyCode(),
                 'currency' => 'PLN',
             ],
             'metadata' => [
                 'customer_id' => $customer->getId(),
+                'payment_id' => $payment->getId(),
             ],
         ];
 

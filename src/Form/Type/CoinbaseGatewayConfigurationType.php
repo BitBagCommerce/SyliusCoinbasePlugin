@@ -28,7 +28,16 @@ final class CoinbaseGatewayConfigurationType extends AbstractType
                 'label' => 'bitbag_sylius_coinbase_plugin.ui.api_key',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'coinbase_sylius_coinbase_plugin.api_key.not_blank',
+                        'message' => 'bitbag_sylius_coinbase_plugin.api_key.not_blank',
+                        'groups' => 'sylius',
+                    ]),
+                ],
+            ])
+            ->add('webhookSecretKey', TextType::class, [
+                'label' => 'bitbag_sylius_coinbase_plugin.ui.webhook_secret_key',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'bitbag_sylius_coinbase_plugin.webhook_secret_key.not_blank',
                         'groups' => 'sylius',
                     ]),
                 ],

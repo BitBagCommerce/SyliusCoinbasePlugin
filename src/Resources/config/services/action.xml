@@ -16,9 +16,5 @@
             <argument type="service" id="sylius.payment_description_provider" />
             <tag name="payum.action" factory="coinbase" alias="payum.action.convert_payment" />
         </service>
-
-        <service id="coinbase_sylius_coinbase_plugin.action.notify" class="BitBag\SyliusCoinbasePlugin\Action\NotifyAction">
-            <tag name="payum.action" factory="coinbase" alias="payum.action.notify" />
-        </service>
     </services>
 </container>

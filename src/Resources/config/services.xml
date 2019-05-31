@@ -9,5 +9,18 @@
 
     <services>
         <service id="bitbag_sylius_coinbase_plugin.api_client.coinbase" class="BitBag\SyliusCoinbasePlugin\ApiClient\CoinbaseApiClient" public="true" />
+
+        <service id="bitbag_sylius_coinbase_plugin.controller.action.payment.notify" class="BitBag\SyliusCoinbasePlugin\Controller\Action\Payment\NotifyAction" public="true">
+            <argument type="service" id="sylius.repository.payment" />
+            <argument type="service" id="sm.factory" />
+            <argument type="service" id="bitbag_sylius_coinbase_plugin.api_client.coinbase" />
+            <argument type="service" id="bitbag_sylius_coinbase_plugin.resolver.payment_state" />
+        </service>
+
+        <service id="bitbag_sylius_coinbase_plugin.resolver.payment_state" class="BitBag\SyliusCoinbasePlugin\Resolver\PaymentStateResolver">
+            <argument type="service" id="sm.factory" />
+            <argument type="service" id="bitbag_sylius_coinbase_plugin.api_client.coinbase" />
+            <argument type="service" id="sylius.manager.payment" />
+        </service>
     </services>
 </container>

@@ -8,7 +8,8 @@
         "php": "^7.2",
 
         "sylius/sylius": "^1.4",
-        "coinbase/coinbase-commerce": "^1.0"
+        "coinbase/coinbase-commerce": "^1.0",
+        "ext-json": "*",
     },
     "require-dev": {
         "behat/behat": "^3.4",

@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCoinbasePlugin\Action;
 
+use BitBag\SyliusCoinbasePlugin\ApiClient\CoinbaseApiClientInterface;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\GatewayAwareInterface;
 use Payum\Core\GatewayAwareTrait;
@@ -38,7 +39,22 @@ final class StatusAction implements ActionInterface, GatewayAwareInterface
             return;
         }
 
-        $request->markCanceled();
+        switch ($details['status']) {
+            case CoinbaseApiClientInterface::STATUS_CREATED:
+            case CoinbaseApiClientInterface::STATUS_NEW:
+            case CoinbaseApiClientInterface::STATUS_PENDING:
+                $request->markPending();
+                break;
+            case CoinbaseApiClientInterface::STATUS_CANCELED:
+                $request->markCanceled();
+                break;
+            case CoinbaseApiClientInterface::STATUS_COMPLETED:
+                $request->markCaptured();
+                break;
+            default:
+                $request->markFailed();
+                break;
+        }
     }
 
     public function supports($request): bool

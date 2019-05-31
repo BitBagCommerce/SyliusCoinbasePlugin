@@ -1,0 +1,5 @@
+bitbag_sylius_coinbase_plugin_payment_notify:
+    path: /payment/coinbase/notify
+    methods: [POST]
+    defaults:
+        _controller: bitbag_sylius_coinbase_plugin.controller.action.payment.notify

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="bitbag_sylius_coinbase_plugin.page.shop.payum.payment" class="Tests\BitBag\SyliusCoinbasePlugin\Behat\Page\Shop\Payum\PaymentPage" parent="sylius.behat.page" public="true">
+            <argument type="service" id="sylius.repository.payment_security_token" />
+            <argument type="service" id="test.client" />
+            <argument type="service" id="router" />
+        </service>
+    </services>
+</container>
