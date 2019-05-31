@@ -18,6 +18,7 @@ use CoinbaseCommerce\Resources\Event;
 interface CoinbaseApiClientInterface
 {
     public const WEBHOOK_SIGNATURE_HEADER_NAME = 'x-cc-webhook-signature';
+    public const FIXED_PRICE_PRICING_TYPE = 'fixed_price';
     public const STATUS_CREATED = 'created';
     public const STATUS_CANCELED = 'canceled';
     public const STATUS_NEW = 'new';

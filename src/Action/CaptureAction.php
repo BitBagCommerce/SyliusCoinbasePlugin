@@ -16,12 +16,12 @@ use BitBag\SyliusCoinbasePlugin\Action\Api\ApiAwareTrait;
 use BitBag\SyliusCoinbasePlugin\ApiClient\CoinbaseApiClientInterface;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\ApiAwareInterface;
+use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\GatewayAwareInterface;
 use Payum\Core\GatewayAwareTrait;
 use Payum\Core\Reply\HttpRedirect;
 use Payum\Core\Request\Capture;
-use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Security\GenericTokenFactoryAwareInterface;
 use Payum\Core\Security\GenericTokenFactoryInterface;
 use Payum\Core\Security\TokenInterface;
@@ -44,7 +44,7 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface, Gateway
 
         $details = ArrayObject::ensureArrayObject($request->getModel());
 
-        if (isset($details['status']) && isset($details['payment_id'])) {
+        if (isset($details['status'], $details['payment_id'])) {
             $charge = $this->coinbaseApiClient->show($details['payment_id']);
 
             $timelineLast = end($charge->timeline);
@@ -56,9 +56,6 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface, Gateway
 
         /** @var TokenInterface $token */
         $token = $request->getToken();
-
-//        $details['redirect_url'] = str_replace('http://127.0.0.1:8005', 'http://fa0e4d7a.ngrok.io', $token->getTargetUrl());
-//        $details['cancel_url'] = str_replace('http://127.0.0.1:8005', 'http://fa0e4d7a.ngrok.io', $token->getTargetUrl());
 
         $details['redirect_url'] = $token->getTargetUrl();
         $details['cancel_url'] = $token->getTargetUrl();

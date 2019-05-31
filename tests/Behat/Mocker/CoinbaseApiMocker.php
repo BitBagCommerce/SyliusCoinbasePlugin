@@ -73,7 +73,7 @@ final class CoinbaseApiMocker
             ],
             [
                 'status' => CoinbaseApiClientInterface::STATUS_COMPLETED,
-            ]
+            ],
         ];
 
         $mock
@@ -113,7 +113,7 @@ final class CoinbaseApiMocker
             ],
             [
                 'status' => CoinbaseApiClientInterface::STATUS_FAILED,
-            ]
+            ],
         ];
 
         $mock
@@ -153,7 +153,7 @@ final class CoinbaseApiMocker
             ],
             [
                 'status' => CoinbaseApiClientInterface::STATUS_CANCELED,
-            ]
+            ],
         ];
 
         $mock

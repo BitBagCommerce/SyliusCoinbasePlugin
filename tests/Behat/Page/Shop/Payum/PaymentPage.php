@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCoinbasePlugin\Behat\Page\Shop\Payum;
 
+use Behat\Mink\Session;
 use BitBag\SyliusCoinbasePlugin\ApiClient\CoinbaseApiClientInterface;
 use FriendsOfBehat\PageObjectExtension\Page\Page;
-use Behat\Mink\Session;
 use Payum\Core\Security\TokenInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\BrowserKit\Client;

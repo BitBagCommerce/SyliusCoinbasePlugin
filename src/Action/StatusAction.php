@@ -14,10 +14,10 @@ namespace BitBag\SyliusCoinbasePlugin\Action;
 
 use BitBag\SyliusCoinbasePlugin\ApiClient\CoinbaseApiClientInterface;
 use Payum\Core\Action\ActionInterface;
+use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\GatewayAwareInterface;
 use Payum\Core\GatewayAwareTrait;
 use Payum\Core\Request\GetStatusInterface;
-use Payum\Core\Exception\RequestNotSupportedException;
 use Sylius\Component\Core\Model\PaymentInterface;
 
 final class StatusAction implements ActionInterface, GatewayAwareInterface
@@ -44,15 +44,19 @@ final class StatusAction implements ActionInterface, GatewayAwareInterface
             case CoinbaseApiClientInterface::STATUS_NEW:
             case CoinbaseApiClientInterface::STATUS_PENDING:
                 $request->markPending();
+
                 break;
             case CoinbaseApiClientInterface::STATUS_CANCELED:
                 $request->markCanceled();
+
                 break;
             case CoinbaseApiClientInterface::STATUS_COMPLETED:
                 $request->markCaptured();
+
                 break;
             default:
                 $request->markFailed();
+
                 break;
         }
     }

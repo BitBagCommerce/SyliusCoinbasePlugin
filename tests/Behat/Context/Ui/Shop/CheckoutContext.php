@@ -13,11 +13,10 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCoinbasePlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCoinbasePlugin\ApiClient\CoinbaseApiClientInterface;
+use Sylius\Behat\Page\Shop\Checkout\CompletePageInterface;
 use Sylius\Behat\Page\Shop\Order\ShowPageInterface;
 use Sylius\Component\Core\Repository\PaymentRepositoryInterface;
 use Tests\BitBag\SyliusCoinbasePlugin\Behat\Mocker\CoinbaseApiMocker;
-use Sylius\Behat\Page\Shop\Checkout\CompletePageInterface;
 use Tests\BitBag\SyliusCoinbasePlugin\Behat\Page\Shop\Payum\PaymentPageInterface;
 
 final class CheckoutContext implements Context
@@ -29,7 +28,7 @@ final class CheckoutContext implements Context
     private $orderDetails;
 
     /** @var CoinbaseApiMocker */
-    private $payPlugApiMocker;
+    private $coinbaseApiMocker;
 
     /** @var PaymentPageInterface */
     private $paymentPage;
@@ -40,13 +39,13 @@ final class CheckoutContext implements Context
     public function __construct(
         CompletePageInterface $summaryPage,
         ShowPageInterface $orderDetails,
-        CoinbaseApiMocker $payPlugApiMocker,
+        CoinbaseApiMocker $coinbaseApiMocker,
         PaymentPageInterface $paymentPage,
         PaymentRepositoryInterface $paymentRepository
     ) {
         $this->summaryPage = $summaryPage;
         $this->orderDetails = $orderDetails;
-        $this->payPlugApiMocker = $payPlugApiMocker;
+        $this->coinbaseApiMocker = $coinbaseApiMocker;
         $this->paymentPage = $paymentPage;
         $this->paymentRepository = $paymentRepository;
     }
@@ -57,7 +56,7 @@ final class CheckoutContext implements Context
      */
     public function iConfirmMyOrderWithCoinbasePayment(): void
     {
-        $this->payPlugApiMocker->mockApiCreatePayment(function () {
+        $this->coinbaseApiMocker->mockApiCreatePayment(function () {
             $this->summaryPage->confirmOrder();
         });
     }
@@ -69,7 +68,7 @@ final class CheckoutContext implements Context
     {
         $payments = $this->paymentRepository->findAll();
 
-        $this->payPlugApiMocker->mockApiSuccessfulPayment(function () use ($payments) {
+        $this->coinbaseApiMocker->mockApiSuccessfulPayment(function () use ($payments) {
             $this->paymentPage->notify([
                 'event' => [
                     'data' => [
@@ -92,7 +91,7 @@ final class CheckoutContext implements Context
     {
         $payments = $this->paymentRepository->findAll();
 
-        $this->payPlugApiMocker->mockApiFailedPayment(function () use ($payments) {
+        $this->coinbaseApiMocker->mockApiFailedPayment(function () use ($payments) {
             $this->paymentPage->notify([
                 'event' => [
                     'data' => [
@@ -116,7 +115,7 @@ final class CheckoutContext implements Context
     {
         $payments = $this->paymentRepository->findAll();
 
-        $this->payPlugApiMocker->mockApiCancelledPayment(function () use ($payments) {
+        $this->coinbaseApiMocker->mockApiCancelledPayment(function () use ($payments) {
             $this->paymentPage->notify([
                 'event' => [
                     'data' => [
@@ -137,7 +136,7 @@ final class CheckoutContext implements Context
      */
     public function iTryToPayAgainCoinbasePayment(): void
     {
-        $this->payPlugApiMocker->mockApiCreatePayment(function () {
+        $this->coinbaseApiMocker->mockApiCreatePayment(function () {
             $this->orderDetails->pay();
         });
     }

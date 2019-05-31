@@ -55,13 +55,13 @@ final class CoinbaseContext implements Context
     /**
      * @Given the store has a payment method :paymentMethodName with a code :paymentMethodCode and Coinbase payment gateway
      */
-    public function theStoreHasAPaymentMethodWithACodeAndPayPlugPaymentGateway(string $paymentMethodName, string $paymentMethodCode): void
+    public function theStoreHasAPaymentMethodWithACodeAndCoinbasePaymentGateway(string $paymentMethodName, string $paymentMethodCode): void
     {
-        $paymentMethod = $this->createPaymentMethodPayPlug(
+        $paymentMethod = $this->createPaymentMethodCoinbase(
             $paymentMethodName,
             $paymentMethodCode,
             CoinbaseGatewayFactory::FACTORY_NAME,
-            'PayPlug'
+            'Coinbase'
         );
 
         $paymentMethod->getGatewayConfig()->setConfig([
@@ -73,7 +73,7 @@ final class CoinbaseContext implements Context
         $this->paymentMethodManager->flush();
     }
 
-    private function createPaymentMethodPayPlug(
+    private function createPaymentMethodCoinbase(
         string $name,
         string $code,
         string $factoryName,

@@ -76,14 +76,17 @@ final class PaymentStateResolver implements PaymentStateResolverInterface
         switch (strtolower($timelineLast['status'])) {
             case CoinbaseApiClientInterface::STATUS_CANCELED:
                 $this->applyTransition($paymentStateMachine, PaymentTransitions::TRANSITION_CANCEL);
+
                 break;
             case CoinbaseApiClientInterface::STATUS_COMPLETED:
                 $this->applyTransition($paymentStateMachine, PaymentTransitions::TRANSITION_COMPLETE);
+
                 break;
             case CoinbaseApiClientInterface::STATUS_PENDING:
             case CoinbaseApiClientInterface::STATUS_CREATED:
             case CoinbaseApiClientInterface::STATUS_NEW:
                 $this->applyTransition($paymentStateMachine, PaymentTransitions::TRANSITION_PROCESS);
+
                 break;
             default:
                 $this->applyTransition($paymentStateMachine, PaymentTransitions::TRANSITION_FAIL);

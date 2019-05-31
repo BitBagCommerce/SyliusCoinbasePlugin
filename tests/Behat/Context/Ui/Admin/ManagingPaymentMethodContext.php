@@ -65,7 +65,6 @@ final class ManagingPaymentMethodContext implements Context
         $this->createPage->setWebhookSecretKey($webhookSecretKey);
     }
 
-
     /**
      * @Then I should be notified that :message
      */
