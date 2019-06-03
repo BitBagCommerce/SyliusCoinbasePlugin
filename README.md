@@ -1,88 +1,62 @@
-<p align="center">
-    <a href="https://sylius.com" target="_blank">
-        <img src="https://demo.sylius.com/assets/shop/img/logo.png" />
-    </a>
-</p>
+## Overview
 
-<h1 align="center">Plugin Skeleton</h1>
-
-<p align="center">Skeleton for starting Sylius plugins.</p>
+This plugin allows you to integrate Coinbase payment with Sylius platform app.
 
 ## Installation
 
-1. Run `composer create-project sylius/plugin-skeleton ProjectName`.
-
-2. From the plugin skeleton root directory, run the following commands:
+1. Require plugin with composer:
 
     ```bash
-    $ (cd tests/Application && yarn install)
-    $ (cd tests/Application && yarn build)
-    $ (cd tests/Application && bin/console assets:install public -e test)
-    
-    $ (cd tests/Application && bin/console doctrine:database:create -e test)
-    $ (cd tests/Application && bin/console doctrine:schema:create -e test)
+    composer require bitbag/coinbase-plugin
     ```
 
-To be able to setup a plugin's database, remember to configure you database credentials in `tests/Application/.env` and `tests/Application/.env.test`.
+2. Import routing on top of your `config/routes.yaml` file:
 
-## Usage
+    ```yaml
+    bitbag_sylius_coinbase_plugin:
+        resource: "@BitBagSyliusCoinbasePlugin/Resources/config/routing.yml"
+    ```
 
-### Running plugin tests
+3. Add plugin class to your `config/bundles.php` file:
 
-  - PHPUnit
+    ```php
+    $bundles = [
+        BitBag\SyliusCoinbasePlugin\BitBagSyliusCoinbasePlugin::class => ['all' => true],
+    ];
+    ```
+
+4. Clear cache:
 
     ```bash
-    $ vendor/bin/phpunit
+    bin/console cache:clear
     ```
+   
+## Customization
 
-  - PHPSpec
+### Available services you can [decorate](https://symfony.com/doc/current/service_container/service_decoration.html) and forms you can [extend](http://symfony.com/doc/current/form/create_form_type_extension.html)
 
-    ```bash
-    $ vendor/bin/phpspec run
-    ```
-
-  - Behat (non-JS scenarios)
-
-    ```bash
-    $ vendor/bin/behat --tags="~@javascript"
-    ```
-
-  - Behat (JS scenarios)
+Run the below command to see what Symfony services are shared with this plugin:
  
-    1. Download [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
-    
-    2. Download [Selenium Standalone Server](https://www.seleniumhq.org/download/).
-    
-    2. Run Selenium server with previously downloaded Chromedriver:
-    
-        ```bash
-        $ java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone.jar
-        ```
-        
-    3. Run test application's webserver on `localhost:8080`:
-    
-        ```bash
-        $ (cd tests/Application && bin/console server:run localhost:8080 -d public -e test)
-        ```
-    
-    4. Run Behat:
-    
-        ```bash
-        $ vendor/bin/behat --tags="@javascript"
-        ```
+    ```bash
+    $ bin/console debug:container bitbag_sylius_coinbase_plugin
+    ```
 
-### Opening Sylius with your plugin
-
-- Using `test` environment:
+## Testing
 
     ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
-    $ (cd tests/Application && bin/console server:run -d public -e test)
+    $ composer install
+    $ cd tests/Application
+    $ yarn install
+    $ yarn run gulp
+    $ bin/console assets:install web -e test
+    $ bin/console doctrine:database:create -e test
+    $ bin/console doctrine:schema:create -e test
+    $ bin/console server:run 127.0.0.1:8080 -d web -e test
+    $ open http://localhost:8080
+    $ bin/behat
+    $ bin/phpspec run
     ```
-    
-- Using `dev` environment:
 
-    ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
-    $ (cd tests/Application && bin/console server:run -d public -e dev)
-    ```
+## Contribution
+
+Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/.
