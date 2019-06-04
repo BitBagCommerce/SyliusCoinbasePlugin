@@ -65,8 +65,6 @@ before_script:
     - (cd tests/Application && bin/console server:run 127.0.0.1:8080 --quiet > /dev/null 2>&1 &)
 
 script:
-    - composer validate --strict
-
     - vendor/bin/phpspec run
     - vendor/bin/behat --strict -vvv --no-interaction || vendor/bin/behat --strict -vvv --no-interaction --rerun
 
