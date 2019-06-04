@@ -66,25 +66,25 @@ For proper operation of the plugin, it is necessary to add a URL to notification
 
 Run the below command to see what Symfony services are shared with this plugin:
  
-    ```bash
-    $ bin/console debug:container bitbag_sylius_coinbase_plugin
-    ```
+```bash
+$ bin/console debug:container bitbag_sylius_coinbase_plugin
+```
 
 ## Testing
 
-    ```bash
-    $ composer install
-    $ cd tests/Application
-    $ yarn install
-    $ yarn run gulp
-    $ bin/console assets:install web -e test
-    $ bin/console doctrine:database:create -e test
-    $ bin/console doctrine:schema:create -e test
-    $ bin/console server:run 127.0.0.1:8080 -d web -e test
-    $ open http://localhost:8080
-    $ bin/behat
-    $ bin/phpspec run
-    ```
+```bash
+$ composer install
+$ cd tests/Application
+$ yarn install
+$ yarn run gulp
+$ bin/console assets:install web -e test
+$ bin/console doctrine:database:create -e test
+$ bin/console doctrine:schema:create -e test
+$ bin/console server:run 127.0.0.1:8080 -d web -e test
+$ open http://localhost:8080
+$ bin/behat
+$ bin/phpspec run
+```
 
 ## Contribution
 
