@@ -59,7 +59,7 @@ bitbag_sylius_coinbase_plugin:
  Add plugin class to your `config/bundles.php` file:
 
 ```php
-$bundles = [
+return = [
     BitBag\SyliusCoinbasePlugin\BitBagSyliusCoinbasePlugin::class => ['all' => true],
 ];
 ```
