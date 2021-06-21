@@ -9,7 +9,7 @@ At BitBag we do believe in open source. However, we are able to do it just becau
 
 ## Table of Content
 ---
-* [Overwiev](#overwiev)
+* [Overview](#overview)
 * [Installation](#installation)
   * [Requirements](#requirements)
   * [Webhook subscriptions](#webhook-subscriptions)
@@ -23,7 +23,7 @@ At BitBag we do believe in open source. However, we are able to do it just becau
 * [Contact](#contact)
 
 
-# Overwiev
+# Overview
 ---
 This plugin allows you to integrate Coinbase payment with Sylius platform app.
 
