@@ -48,7 +48,7 @@ final class PaymentStateResolver implements PaymentStateResolverInterface
         /** @var PaymentMethodInterface $paymentMethod */
         $paymentMethod = $payment->getMethod();
 
-        if (CoinbaseGatewayFactory::FACTORY_NAME !== $paymentMethod->getGatewayConfig()->getFactoryName()) {
+        if (CoinbaseGatewayFactory::FACTORY_NAME !== $paymentMethod->getGatewayConfig()->getConfig()['factoryName']) {
             return;
         }
 
@@ -71,7 +71,8 @@ final class PaymentStateResolver implements PaymentStateResolverInterface
     {
         $paymentStateMachine = $this->stateMachineFactory->get($payment, PaymentTransitions::GRAPH);
 
-        $timelineLast = end($charge->timeline);
+        $timeline = (array)$charge->timeline;
+        $timelineLast = end($timeline);
 
         switch (strtolower($timelineLast['status'])) {
             case CoinbaseApiClientInterface::STATUS_CANCELED:

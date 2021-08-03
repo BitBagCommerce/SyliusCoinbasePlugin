@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCoinbasePlugin\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -41,6 +42,9 @@ final class CoinbaseGatewayConfigurationType extends AbstractType
                         'groups' => 'sylius',
                     ]),
                 ],
+            ])
+            ->add('factoryName', HiddenType::class, [
+                'empty_data' => 'coinbase',
             ])
             ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $data = $event->getData();

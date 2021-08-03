@@ -1,5 +1,4 @@
 imports:
-    - { resource: "../../../vendor/symfony/framework-bundle/Resources/config/test.xml" }
     - { resource: "../../Behat/Resources/services.xml" }
     - { resource: "../../../vendor/sylius/sylius/src/Sylius/Behat/Resources/config/services.xml" }
 

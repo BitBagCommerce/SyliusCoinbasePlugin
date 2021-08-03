@@ -17,7 +17,7 @@ use BitBag\SyliusCoinbasePlugin\ApiClient\CoinbaseApiClientInterface;
 use FriendsOfBehat\PageObjectExtension\Page\Page;
 use Payum\Core\Security\TokenInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Symfony\Component\BrowserKit\Client;
+use Symfony\Component\BrowserKit\AbstractBrowser;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -26,7 +26,7 @@ final class PaymentPage extends Page implements PaymentPageInterface
     /** @var RepositoryInterface */
     private $securityTokenRepository;
 
-    /** @var Client */
+    /** @var AbstractBrowser */
     private $client;
 
     /** @var RouterInterface */
@@ -36,7 +36,7 @@ final class PaymentPage extends Page implements PaymentPageInterface
         Session $session,
         $parameters,
         RepositoryInterface $securityTokenRepository,
-        Client $client,
+        AbstractBrowser $client,
         RouterInterface $router
     ) {
         parent::__construct($session, $parameters);
