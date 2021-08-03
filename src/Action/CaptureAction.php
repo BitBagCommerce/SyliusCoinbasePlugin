@@ -47,7 +47,8 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface, Gateway
         if (isset($details['status'], $details['payment_id'])) {
             $charge = $this->coinbaseApiClient->show($details['payment_id']);
 
-            $timelineLast = end($charge->timeline);
+            $timeline = (array)$charge->timeline;
+            $timelineLast = end($timeline);
 
             $details['status'] = strtolower($timelineLast['status']);
 

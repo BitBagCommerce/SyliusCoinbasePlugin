@@ -14,7 +14,7 @@ namespace Tests\BitBag\SyliusCoinbasePlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCoinbasePlugin\CoinbaseGatewayFactory;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
@@ -35,7 +35,7 @@ final class CoinbaseContext implements Context
     /** @var FactoryInterface */
     private $paymentMethodTranslationFactory;
 
-    /** @var ObjectManager */
+    /** @var EntityManagerInterface */
     private $paymentMethodManager;
 
     public function __construct(
@@ -43,7 +43,7 @@ final class CoinbaseContext implements Context
         PaymentMethodRepositoryInterface $paymentMethodRepository,
         ExampleFactoryInterface $paymentMethodExampleFactory,
         FactoryInterface $paymentMethodTranslationFactory,
-        ObjectManager $paymentMethodManager
+        EntityManagerInterface $paymentMethodManager
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->paymentMethodRepository = $paymentMethodRepository;
@@ -68,6 +68,7 @@ final class CoinbaseContext implements Context
             'apiKey' => 'test',
             'webhookSecretKey' => 'test',
             'payum.http_client' => '@bitbag_sylius_coinbase_plugin.api_client.coinbase',
+            'factoryName' => 'coinbase',
         ]);
 
         $this->paymentMethodManager->flush();
