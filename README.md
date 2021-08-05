@@ -42,8 +42,8 @@ This **open-source plugin was developed to help the Sylius community** and make 
 
 | Package       | Version        |
 |:-------------:|:--------------:|
-| PHP           |  ^7.2  |
-| Sylius           |  ^1.4  |
+| PHP           |  ^7.3  |
+| Sylius           |  ^1.9  |
 ---
  Require plugin with composer:
 
