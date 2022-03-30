@@ -5,8 +5,8 @@
     "description": "Coinbase payment plugin for Sylius applications.",
     "license": "MIT",
     "require": {
-        "php": "^7.3 || ^7.4",
-        "sylius/sylius": "~1.9.0 || ~1.10.0",
+        "php": "^7.4 || ^8.0",
+        "sylius/sylius": "~1.9.0 || ~1.10.0 || ~1.11.0",
         "coinbase/coinbase-commerce": "^1.0",
         "ext-json": "*"
     },
@@ -38,7 +38,8 @@
         "symfony/dotenv": "^4.4 || ^5.2",
         "symfony/intl": "^4.4 || ^5.2",
         "symfony/web-profiler-bundle": "^4.4 || ^5.2",
-        "vimeo/psalm": "4.7.1"
+        "vimeo/psalm": "4.7.1",
+        "polishsymfonycommunity/symfony-mocker-container": "^1.0"
     },
     "conflict": {
         "symfony/symfony": "4.1.8",
