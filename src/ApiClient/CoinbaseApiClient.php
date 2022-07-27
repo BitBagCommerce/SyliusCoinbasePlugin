@@ -38,7 +38,11 @@ class CoinbaseApiClient implements CoinbaseApiClientInterface
         return Util::convertToApiObject($response);
     }
 
-    public function buildEvent(string $payload, string $signatureHeader, string $secret): Event
+    public function buildEvent(
+        string $payload,
+        string $signatureHeader,
+        string $secret
+    ): Event
     {
         return Webhook::buildEvent($payload, $signatureHeader, $secret);
     }
