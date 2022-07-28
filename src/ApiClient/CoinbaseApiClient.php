@@ -42,8 +42,7 @@ class CoinbaseApiClient implements CoinbaseApiClientInterface
         string $payload,
         string $signatureHeader,
         string $secret
-    ): Event
-    {
+    ): Event {
         return Webhook::buildEvent($payload, $signatureHeader, $secret);
     }
 }
