@@ -69,7 +69,7 @@ final class PaymentStateResolver implements PaymentStateResolverInterface
     {
         $paymentStateMachine = $this->stateMachineFactory->get($payment, PaymentTransitions::GRAPH);
 
-        $timeline = (array)$charge->timeline;
+        $timeline = (array) $charge->timeline;
         $timelineLast = end($timeline);
 
         switch (strtolower($timelineLast['status'])) {

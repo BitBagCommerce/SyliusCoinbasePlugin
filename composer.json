@@ -32,13 +32,13 @@
         "phpstan/phpstan-webmozart-assert": "0.12.12",
         "phpunit/phpunit": "^9.5",
         "sensiolabs/security-checker": "^6.0",
-        "sylius-labs/coding-standard": "^4.0",
         "symfony/browser-kit": "^4.4 || ^5.2",
         "symfony/debug-bundle": "^4.4 || ^5.2",
         "symfony/dotenv": "^4.4 || ^5.2",
         "symfony/intl": "^4.4 || ^5.2",
         "symfony/web-profiler-bundle": "^4.4 || ^5.2",
-        "vimeo/psalm": "4.7.1"
+        "vimeo/psalm": "4.7.1",
+        "bitbag/coding-standard": "^1.0.1"
     },
     "conflict": {
         "symfony/symfony": "4.1.8",

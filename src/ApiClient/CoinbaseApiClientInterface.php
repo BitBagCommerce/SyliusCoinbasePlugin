@@ -16,12 +16,19 @@ use CoinbaseCommerce\Resources\Event;
 interface CoinbaseApiClientInterface
 {
     public const WEBHOOK_SIGNATURE_HEADER_NAME = 'x-cc-webhook-signature';
+
     public const FIXED_PRICE_PRICING_TYPE = 'fixed_price';
+
     public const STATUS_CREATED = 'created';
+
     public const STATUS_CANCELED = 'canceled';
+
     public const STATUS_NEW = 'new';
+
     public const STATUS_PENDING = 'pending';
+
     public const STATUS_COMPLETED = 'completed';
+
     public const STATUS_FAILED = 'failed';
 
     public function initialise(string $apiKey): void;
@@ -30,5 +37,9 @@ interface CoinbaseApiClientInterface
 
     public function show(string $paymentId): Charge;
 
-    public function buildEvent(string $payload, string $signatureHeader, string $secret): Event;
+    public function buildEvent(
+        string $payload,
+        string $signatureHeader,
+        string $secret
+    ): Event;
 }
