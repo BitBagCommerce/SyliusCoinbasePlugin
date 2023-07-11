@@ -5,7 +5,7 @@
 
 [ ![](https://img.shields.io/packagist/l/bitbag/coinbase-plugin.svg) ](https://packagist.org/packages/bitbag/coinbase-plugin "License") 
 [ ![](https://img.shields.io/packagist/v/bitbag/coinbase-plugin.svg) ](https://packagist.org/packages/bitbag/coinbase-plugin "Version") 
-[ ![](https://travis-ci.org/BitBagCommerce/SyliusCoinbasePlugin.svg?branch=master) ](https://travis-ci.org/BitBagCommerce/SyliusCoinbasePlugin "Build status")
+[ ![](https://img.shields.io/github/actions/workflow/status/BitBagCommerce/SyliusCoinbasePlugin/build.yml?branch=master) ](https://github.com/BitBagCommerce/SyliusCoinbasePlugin/actions "Build status")
 [ ![](https://img.shields.io/scrutinizer/g/BitBagCommerce/SyliusCoinbasePlugin.svg) ](https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCoinbasePlugin "Scrutinizer") 
 [ ![](https://poser.pugx.org/bitbag/coinbase-plugin/downloads)](https://packagist.org/packages/bitbag/coinbase-plugin "Total Downloads") 
 [ ![Slack](https://img.shields.io/badge/community%20chat-slack-FF1493.svg)](http://sylius-devs.slack.com) 
