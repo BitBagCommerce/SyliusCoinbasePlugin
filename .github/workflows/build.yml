@@ -14,22 +14,29 @@ on:
 
 jobs:
     tests:
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-22.04
 
         name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, MySQL ${{ matrix.mysql }}"
 
         strategy:
             fail-fast: false
             matrix:
-                php: ["7.4"]
+                php: ["8.0"]
                 symfony: ["^4.4", "^5.2"]
-                sylius: ["~1.9.6", "~1.10.0"]
+                sylius: ["~1.11.0"]
                 node: ["10.x"]
                 mysql: ["8.0"]
 
                 exclude:
                     - sylius: 1.10.0
                       symfony: 4.4
+
+                exclude:
+                    - sylius: ~1.10.0
+                      symfony: 4.4
+
+                    - sylius: ~1.11.0
+                      php: 7.4
 
         env:
             APP_ENV: test
