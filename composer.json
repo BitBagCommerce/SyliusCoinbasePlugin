@@ -8,6 +8,7 @@
         "php": "^7.3 || ^7.4",
         "sylius/sylius": "~1.9.0 || ~1.10.0",
         "coinbase/coinbase-commerce": "^1.0",
+        "php-http/message-factory": "^1.1",
         "ext-json": "*"
     },
     "require-dev": {
